@@ -21,6 +21,7 @@
           helloworld = pkgs.callPackage ./pkgs/helloworld { };
           genseki-gothic = pkgs.callPackage ./pkgs/fonts/genseki-gothic { };
           comic-code = pkgs.callPackage ./pkgs/fonts/comic-code { };
+          vt323 = pkgs.callPackage ./pkgs/fonts/vt323 { };
         };
       }));
 }
