@@ -24,6 +24,7 @@
           vt323 = pkgs.callPackage ./pkgs/fonts/vt323 { };
           dogica = pkgs.callPackage ./pkgs/fonts/dogica { };
           dank-mono = pkgs.callPackage ./pkgs/fonts/dank-mono { };
+          zpix-pixel = pkgs.callPackage ./pkgs/fonts/zpix-pixel { };
         };
       }));
 }
