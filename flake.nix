@@ -18,6 +18,11 @@
       {
         packages = {
           helloworld = pkgs.callPackage ./pkgs/helloworld { };
+
+          # assets
+          wallpapers = pkgs.callPackage ./pkgs/wallpapers { };
+
+          # fonts
           genseki-gothic = pkgs.callPackage ./pkgs/fonts/genseki-gothic { };
           comic-code = pkgs.callPackage ./pkgs/fonts/comic-code { };
           comic-code-ligatures = pkgs.callPackage ./pkgs/fonts/comic-code-ligatures { };
