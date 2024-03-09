@@ -17,10 +17,8 @@
       in
       {
         packages = {
+          # pkgs
           helloworld = pkgs.callPackage ./pkgs/helloworld { };
-
-          # assets
-          wallpapers = pkgs.callPackage ./pkgs/wallpapers { };
 
           # fonts
           genseki-gothic = pkgs.callPackage ./pkgs/fonts/genseki-gothic { };
