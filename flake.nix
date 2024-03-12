@@ -2,7 +2,7 @@
   description = "My personal NUR repository";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -19,6 +19,7 @@
         packages = {
           # pkgs
           helloworld = pkgs.callPackage ./pkgs/helloworld { };
+          glider = pkgs.callPackage ./pkgs/glider { };
 
           # fonts
           genseki-gothic = pkgs.callPackage ./pkgs/fonts/genseki-gothic { };
