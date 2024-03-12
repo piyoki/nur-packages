@@ -26,6 +26,15 @@ update:
 show:
   @nix flake show
 
+# check flake
+check:
+  @nix flake check
+
+# apply fix from linters
+lint:
+  @statix fix --ignore 'templates/' .
+  @deadnix --edit --exclude 'templates/' .
+
 # update a particular flake input
 update-input input:
   @nix flake lock --update-input {{ input }}

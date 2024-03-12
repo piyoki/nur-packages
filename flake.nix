@@ -4,18 +4,29 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     flake-utils.url = "github:numtide/flake-utils";
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+  outputs = { nixpkgs, flake-utils, ... }@inputs: with inputs;
     let
       # lib = nixpkgs.lib;
       supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
     in
-    (flake-utils.lib.eachSystem supportedSystems (system:
+    flake-utils.lib.eachSystem supportedSystems (system:
       let
         pkgs = (import nixpkgs) { inherit system; config.allowUnfree = true; };
+        genChecks = system: (pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixpkgs-fmt.enable = true; # formatter
+            statix.enable = true; # linter
+            deadnix.enable = true; # linter
+          };
+        });
       in
       {
+        # checks
+        checks.pre-commit-check = genChecks system;
         packages = {
           # pkgs
           helloworld = pkgs.callPackage ./pkgs/helloworld { };
@@ -29,5 +40,5 @@
           dank-mono = pkgs.callPackage ./pkgs/fonts/dank-mono { };
           zpix-pixel = pkgs.callPackage ./pkgs/fonts/zpix-pixel { };
         };
-      }));
+      });
 }
