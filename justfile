@@ -1,28 +1,33 @@
 # justfile
 # cheatsheet: https://cheatography.com/linux-china/cheat-sheets/justfile/
 
+# ===== Settings ===== #
+#
 # define alias
+alias b := rebuild
 
 # set options
 set positional-arguments := true
+set dotenv-load := true
+
+# assign default value to vars
+profile := "$PROFILE"
 
 # default recipe to display help information
 default:
   @just --list
 
-# build pkg
-build pkg:
-  @nix build .#{{ pkg }}
-
-# check version
-version pkg:
-  @./result/bin/{{ pkg }} --version
+# ===== Nix ===== #
 
 # update all flake inputs
-update:
+up:
   @nix flake update
 
-# show flake
+# update a particular flake input
+upp input:
+  @nix flake lock --update-input {{ input }}
+
+# show flake outputs
 show:
   @nix flake show
 
@@ -30,14 +35,17 @@ show:
 check:
   @nix flake check
 
-# apply fix from linters
-lint:
-  @statix fix --ignore 'templates/' .
-  @deadnix --edit --exclude 'templates/' .
+# build nix pkg
+build pkg:
+  @nom build .#{{ pkg }}
 
-# update a particular flake input
-update-input input:
-  @nix flake lock --update-input {{ input }}
+# run nix pkg
+run pkg:
+  @nix run .#{{ pkg }}
+
+# view flake.lock
+view:
+  @nix-melt
 
 # nix-prefetch-url
 prefetch-url url:
@@ -47,6 +55,27 @@ prefetch-url url:
 prefetch-git repo rev:
   @nix-prefetch-git --url 'git@github.com:{{ repo }}' --rev '{{ rev }}' --fetch-submodules
 
+# activate nix-repl
+repl:
+  @nix repl -f flake:nixpkgs
+
+# apply fix from linters
+lint:
+  @statix fix --ignore 'templates/' .
+  @deadnix --edit --exclude 'templates/' .
+
+# ===== Misc ===== #
+
+# count total number of nix-related files
+count:
+  @rg '' --glob "!.git" --glob "!home-estate" --glob "!secrets" --files-with-matches | wc -l
+
+# ===== Git ===== #
+
 # stage all files
 add:
   @git add .
+
+# git pull
+pull:
+  @git pull --rebase
