@@ -4,8 +4,8 @@ let
   name = "comic-code-ligatures";
   version = "unstable-2024-02-27";
   src = pkgs.fetchurl {
-    url = "https://fars.ee/VaZr";
-    sha256 = "0psgh3h09mwiiqm9lvh5y2nvg6gvj5pd9sxq1c012zskpl86vwcl";
+    url = "https://fars.ee/7MRK";
+    sha256 = "sha256-8sAinFUiP1OgiUTbcQOi2dEkydPYUOdQQ6n291Olxh4=";
   };
   meta = with pkgs.lib; {
     description = "A legible font";

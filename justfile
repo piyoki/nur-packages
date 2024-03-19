@@ -2,9 +2,6 @@
 # cheatsheet: https://cheatography.com/linux-china/cheat-sheets/justfile/
 
 # ===== Settings ===== #
-#
-# define alias
-alias b := rebuild
 
 # set options
 set positional-arguments := true
