@@ -32,6 +32,10 @@ show:
 check:
   @nix flake check
 
+# eval and build nixosConfiguration for all profiles
+eval:
+  @nix run .#nix-fast-build
+
 # build nix pkg
 build pkg:
   @nom build .#{{ pkg }}
