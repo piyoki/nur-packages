@@ -35,6 +35,7 @@
           # pkgs
           helloworld = pkgs.callPackage ./pkgs/helloworld { };
           glider = pkgs.callPackage ./pkgs/glider { };
+          mosdns = pkgs.callPackage ./pkgs/mosdns { };
 
           # fonts
           genseki-gothic = pkgs.callPackage ./pkgs/fonts/genseki-gothic { };
