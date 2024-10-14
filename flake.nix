@@ -36,6 +36,7 @@
           helloworld = pkgs.callPackage ./pkgs/helloworld { };
           glider = pkgs.callPackage ./pkgs/glider { };
           mosdns = pkgs.callPackage ./pkgs/mosdns { };
+          gitmux = pkgs.callPackage ./pkgs/gitmux { };
 
           # fonts
           genryu = pkgs.callPackage ./pkgs/fonts/genryu { };
