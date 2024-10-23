@@ -40,6 +40,7 @@
 
           # fonts
           genryu = pkgs.callPackage ./pkgs/fonts/genryu { };
+          genwan = pkgs.callPackage ./pkgs/fonts/genwan { };
           genseki-gothic = pkgs.callPackage ./pkgs/fonts/genseki-gothic { };
           comic-code = pkgs.callPackage ./pkgs/fonts/comic-code { };
           comic-code-ligatures = pkgs.callPackage ./pkgs/fonts/comic-code-ligatures { };
