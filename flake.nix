@@ -39,6 +39,7 @@
           gitmux = pkgs.callPackage ./pkgs/gitmux { };
 
           # fonts
+          iansui = pkgs.callPackage ./pkgs/fonts/iansui { };
           genryu = pkgs.callPackage ./pkgs/fonts/genryu { };
           genwan = pkgs.callPackage ./pkgs/fonts/genwan { };
           genseki-gothic = pkgs.callPackage ./pkgs/fonts/genseki-gothic { };
