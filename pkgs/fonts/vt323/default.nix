@@ -4,8 +4,8 @@ let
   name = "vt323";
   version = "unstable-2024-02-27";
   src = pkgs.fetchurl {
-    url = "https://allbestfonts.com/wp-content/uploads/2017/08/VT323.zip";
-    sha256 = "0zm3847fsqr9mb1v3g4h3bdg4mnpfps24x79fjs66r9mwmz72gwh";
+    url = "https://fars.ee/EERJ";
+    sha256 = "sha256-SpK1+z6IR/Fd3D76NoGbyg6VVmjonvKwv3bjYrsRgW0=";
   };
   meta = with pkgs.lib; {
     description = "An ancient font";
@@ -23,6 +23,6 @@ stdenv.mkDerivation rec {
     unzip $src
   '';
   installPhase = ''
-    install -Dm444 VT323/*.ttf -t $out/share/fonts/opentype/${name}
+    install -Dm444 VT323-Regular.ttf -t $out/share/fonts/opentype/${name}
   '';
 }
